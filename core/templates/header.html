@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row vertical-align">
+        {% if image %}
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <img src="/media/{{image}}" class="img-responsive center-block">
+        </div>
+        {% else %}
+        <div class="col-md-3">
+            <div class="widget p-lg text-center">
+                <div class="m-b-md">
+                    <i class="fa fa-file-image-o fa-4x"></i>
+                    <h3 class="font-bold no-margins"></h3>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div id="fittext" class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+      		{{text|safe}}
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  fitText(document.getElementById('fittext'), 1.2, { minFontSize: '48px', maxFontSize: '80px' })
+</script>
+

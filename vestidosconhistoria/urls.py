@@ -16,7 +16,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from core.views import HomeView, ContactView
+from webpage_core.views import PageView
+from django.conf import settings
 
 urlpatterns = [
+    url(r'^$', HomeView.as_view()),
+	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT}),
     url(r'^admin/', admin.site.urls),
+    url(r'^contacto/$', ContactView.as_view(), name='contact_view'),
+    url(r'^(?P<url_name>\w+)/', PageView.as_view(), name='page'),
 ]

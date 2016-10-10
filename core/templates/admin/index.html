@@ -1,0 +1,21 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static vestidos_tags %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}dashboard{% endblock %}
+
+{% block breadcrumbs %}
+<ul class="breadcrumb">
+<li>{% trans 'Administrar contenidos' %}</li>
+</ul>
+{% endblock %}
+
+{% block object-tools %}
+
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}

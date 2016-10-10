@@ -1,0 +1,103 @@
+{% load i18n admin_static bootstrapped_goodies_tags %}
+
+    {% block title %}{% endblock %}
+
+	{% block css %}
+    <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet"/>
+    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/overrides.css" %}" />
+    <link href="{% static "css/style.css" %}" rel="stylesheet"/>
+
+    <!--Bootstrap Image Gallery CSS-->
+    <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <!--<link rel="stylesheet" href="{% static 'css/bootstrap-image-gallery.min.css' %}"> -->
+    <!--end of Bootstrap Image Gallery CSS-->
+
+    {% if LANGUAGE_BIDI %}
+    <link href="{% static "bootstrap-rtl/css/bootstrap-rtl.min.css" %}" rel="stylesheet"/>
+    <link href="{% static "bootstrap-rtl/css/bootstrap-flipped.min.css" %}" rel="stylesheet"/>
+    {% endif %}
+
+    <script type="text/javascript">
+    //<![CDATA[
+        window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";
+        window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";
+    //]]>
+    </script>
+
+    <script src="{% static "admin/js/jquery-1.9.1.min.js" %}"></script>
+    <script src="{% static "admin/js/jquery-migrate-1.2.1.min.js" %}"></script>
+    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/fittext.js" %}"></script>
+
+    <!--Bootstrap Image Gallery JS-->
+    <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+    <!--<script src="{% static 'js/bootstrap-image-gallery.min.js' %}"></script> -->
+    <!--end of Bootstrap Image Gallery JS-->
+
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}" />
+	{% endblock %}
+
+{% block body %}
+<body style="background: url(/media/{{background}}) no-repeat center top fixed;">
+	{% block content %}
+    <div class="body">
+	<div class="row">
+        <!--Identacion para centralizar los contents-->
+		<div class="col-md-1">
+		</div>
+		<div class="col-md-10">
+		{% for content in contents %}
+
+        {{content}}
+        <br>
+        {% endfor %}
+
+	</div>
+	</div>
+
+    <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+    <div id="blueimp-gallery" class="blueimp-gallery" data-use-bootstrap-modal="false">
+        <!-- The container for the modal slides -->
+        <div class="slides"></div>
+        <!-- Controls for the borderless lightbox -->
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+        <!-- The modal dialog, which will be used to wrap the lightbox content -->
+        <div class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body next"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left prev">
+                            <i class="glyphicon glyphicon-chevron-left"></i>
+                            Previous
+                        </button>
+                        <button type="button" class="btn btn-primary next">
+                            Next
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of The Bootstrap Image Gallery lightbox-->
+</div>
+
+{% endblock %}
+{% block footer %}
+<footer class="footer-custom">
+   &#x24B8; 2016 Vestidos con Historia
+</footer>
+{%endblock%}
+</body>
+{% endblock %}
