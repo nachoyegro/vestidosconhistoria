@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from core.views import HomeView, ContactView
+from core.views import HomeView, ContactView, VendeTuVestidoView
 from webpage_core.views import PageView
 from django.conf import settings
 
@@ -26,5 +26,6 @@ urlpatterns = [
         'document_root': settings.MEDIA_ROOT}),
     url(r'^admin/', admin.site.urls),
     url(r'^contacto/$', ContactView.as_view(), name='contact_view'),
+    url(r'^vende_tu_vestido/$', VendeTuVestidoView.as_view(), name='vende_tu_vestido_view'),
     url(r'^(?P<url_name>\w+)/', PageView.as_view(), name='page'),
 ]

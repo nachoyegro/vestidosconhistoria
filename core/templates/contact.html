@@ -31,45 +31,29 @@
                                 </a>
                             </div>
                         </div>
-
-                        
                         <div class="ibox-content">
                             <form action="{% url 'contact_view' %}" method="POST" class="form-horizontal">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Nombre</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control" id="nombre" name="nombre"></input>
+                                    <div class="col-sm-12"><input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre y Apellido"></input>
                                     </div>
 
-                                    <label class="col-sm-2 control-label">Email</label>
-                                    <div class="col-sm-10"><input type="email" class="form-control" id="email" name="email"></input>
+                                    <div class="col-sm-12"><input type="email" class="form-control" id="email" name="email" placeholder="Email"></input>
                                     </div>
 
-                                    <label class="col-sm-2 control-label">Telefono</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control" id="telefono" name="telefono"></input>
+                                    <div class="col-sm-12"><input type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefono"></input>
                                     </div>
-
-                                    <label class="col-sm-2 control-label">Provincia</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control" id="provincia" name="provincia"></input>
+                                    <div class="col-sm-12"><input type="text" class="form-control" id="fecha_casamiento" name="fecha_casamiento" placeholder="Fecha de Casamiento"></input>
                                     </div>
-
-                                    <label class="col-sm-2 control-label">Localidad</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control" id="localidad" name="localidad"></input>
+                                    <div class="col-sm-12"><input type="text" class="form-control" id="conocieron" name="conocieron" placeholder="¿Cómo conociste Vestidos con Historia?"></input>
                                     </div>
-
-                                    <label class="col-sm-2 control-label">Asunto</label>
-                                    <div class="col-sm-10"><input type="text" class="form-control" id="asunto" name="asunto" value="{% if asunto %}Quiero {{asunto}}{% endif %}"></input>
-                                    </div>
-
-                                    <label class="col-sm-2 control-label">Mensaje</label>
-                                    <div class="col-sm-10"><textarea class="form-control" id="mensaje" name="mensaje"></textarea>
+                                    <div class="col-sm-12"><textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario"></textarea>
                                     </div>
                                 </div>
-                                
-                            <h4 style="text-align: center;"> Consulte por envíos</h4>
+
                             </div>
                                 <br>
-                                <div class="col-sm-10">
+                                <div class="col-sm-12">
                                 <input class="btn btn-w-m btn-primary" type="submit" value="Enviar" id="enviar"></input>
                                 </div>
 
@@ -78,12 +62,8 @@
 
                     </div>
                 </div>
-                <div class="col-lg-4">
-                <div id="leaflet_div-1455202903677" class="leaflet_div align-center responsive-map" data-lat="-34.7114269" data-lon="-58.29122880000001" data-width="400" data-height="400" data-zoom="15" data-popup-text="Taller kikinda" data-tile="MapQuestOpen.OSM" data-minimap="on" data-alignment="center" data-responsive="on"><iframe scrolling="no" id="leaflet_iframe-1455202903677" class="leaflet_iframe responsive-map-iframe" width="400px" height="400px" frameborder="0" allowtransparency="true" src="http://tallerkikinda.com.ar/static/ckeditor/plugins/leaflet/scripts/mapParser.html?t=G14E?lat=-34.7114269&amp;lon=-58.29122880000001&amp;width=400&amp;height=400&amp;zoom=15&amp;text=Taller kikinda&amp;tile=MapQuestOpen.OSM&amp;minimap=on&amp;responsive=on" data-cke-saved-src="http://tallerkikinda.com.ar/static/ckeditor/plugins/leaflet/scripts/mapParser.html?t=G14E?lat=-34.7114269&amp;lon=-58.29122880000001&amp;width=400&amp;height=400&amp;zoom=15&amp;text=Taller kikinda&amp;tile=MapQuestOpen.OSM&amp;minimap=on&amp;responsive=on"></iframe></div>
-                </div>
             </div>
         </div>
 
 </div>
 {% endblock %}
-

@@ -48,10 +48,9 @@ class Contacto(models.Model):
     nombre = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     telefono = models.CharField(max_length=64, blank=True, null=True)
-    provincia = models.CharField(max_length=128, blank=True, null=True)
-    localidad = models.CharField(max_length=128, blank=True, null=True)
-    asunto = models.CharField(max_length=255)
-    mensaje = models.TextField()
+    fecha_casamiento = models.DateField(blank=True, null=True)
+    conocieron = models.CharField(max_length=255)
+    comentario = models.TextField()
 
     def __unicode__(self, *args, **kwargs):
         return u"%s %s" % (self.nombre, self.asunto)
@@ -98,3 +97,19 @@ class Botonera(Content):
 
     def __unicode__(self, *args, **kwargs):
         return u'Botonera'
+
+class VendeTuVestido(models.Model):
+    nombre = models.CharField(max_length=255)
+    apellido = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    telefono = models.CharField(max_length=64, blank=True, null=True)
+    fecha_casamiento = models.DateField()
+    modista = models.CharField(max_length=255)
+    precio_venta = models.DecimalField(decimal_places=2, max_digits=10)
+    talle_contorno_espalda = models.CharField(max_length=128)
+    talle_corpino = models.CharField(max_length=128)
+    altura = models.CharField(max_length=128)
+    comentarios = models.TextField()
+
+    def __unicode__(self, *args, **kwargs):
+        return u'%s-%s' % (self.nombre, self.apellido)

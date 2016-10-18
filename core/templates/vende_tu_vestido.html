@@ -1,0 +1,106 @@
+{% extends 'page_base.html' %}
+
+{% block js %}
+{{block.super}}
+<script>
+$(document).ready(function(){
+
+
+$("#fecha_casamiento").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: 'mm/dd/yy'
+});
+})
+</script>
+{% endblock %}
+
+{% block content %}
+{{ block.super }}
+<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-8">
+<div class="row">
+                {% if success %}
+                <div class="alert alert-success" id="mensaje_exito">
+                    Se ha enviado con éxito.
+                </div>
+                {% endif %}
+                {% if error %}
+                <div class="alert alert-danger" id="mensaje_exito">
+                    No se pudo enviar su consulta. Por favor, intente nuevamente
+                </div>
+                {% endif %}
+
+                <div class="col-lg-8">
+                    <div class="ibox float-e-margins">
+
+                        <div class="ibox-title">
+                            <h5>Vendé tu Vestido</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div class="ibox-content">
+                            <form action="{% url 'vende_tu_vestido_view' %}" method="POST" class="form-horizontal">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre"></input>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido"></input>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email"></input>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Teléfono"></input>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="fecha_casamiento" name="fecha_casamiento" placeholder="Fecha de Casamiento"></input>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="modista" name="modista" placeholder="Diseñador / Modista"></input>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="talle_contorno_espalda" name="talle_contorno_espalda" placeholder="Talle Contorno de Espalda"></input>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="precio_venta" name="precio_venta" placeholder="Precio de Venta"></input>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="talle_corpino" name="talle_corpino" placeholder="Talle de Corpiño"></input>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="altura" name="altura" placeholder="Altura"></input>
+                                    </div>
+                                    <div class="col-sm-12"><input class="form-control" id="comentarios" name="comentarios" placeholder="Comentarios"></input>
+                                    </div>
+                                </div>
+                            </div>
+                                <br>
+                                <div class="col-sm-12">
+                                <input class="btn btn-w-m btn-primary" type="submit" value="Enviar" id="enviar"></input>
+                                </div>
+
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+{% endblock %}

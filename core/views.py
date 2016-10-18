@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from webpage_core.models import Page, Content
 from django.views.generic import View
 from webpage_core.views import PageView
+from core.forms import ContactForm, VendeTuVestidoForm
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+
 
 # Create your views here.
 
@@ -30,27 +33,19 @@ class ContactView(PageView):
     def post(self, request, *args, **kwargs):
         form = ContactForm(data=request.POST)
         if form.is_valid():
-            to = get_list_mails()
-            nombre = form['nombre'].data
-            email = form['email'].data
-            telefono = form['telefono'].data
-            provincia = form['provincia'].data
-            localidad = form['localidad'].data
-            asunto = form['asunto'].data
-            mensaje = form['mensaje'].data
-            today = datetime.date.today()
-            msg = '\n Ha recibido un mail de %s ' % nombre
-            msg += 'con los siguientes datos: \n\n Email: %s' % email
-            msg += '\n\n Telefono: %s' % telefono
-            msg += '\n Provincia: %s' % provincia
-            msg += '\n Localidad: %s' % localidad
-            msg += '\n\n Mensaje: \n %s ' % mensaje
-            msg += '\n\n\n Mensaje enviado desde vestidosconhistoria.com el %s' % today.strftime('%d/%m/%Y')
-            try:
-                send_mail(asunto, msg, email, to)
-            except Exception as e:
-                return HttpResponseRedirect('/contacto/?error=True')
-            else:
-                form.save()
-                return HttpResponseRedirect('/contacto/?success=True')
+            form.save()
+            return HttpResponseRedirect('/contacto/?success=True')
         return HttpResponseRedirect('/contacto/?error=True')
+
+class VendeTuVestidoView(PageView):
+
+    def get(self, request, extras = {}):
+        page = get_object_or_404(Page, url_name='vende')
+        return render_page(page, request, extras)
+
+    def post(self, request, *args, **kwargs):
+        form = VendeTuVestidoForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/vende_tu_vestido/?success=True')
+        return HttpResponseRedirect('/vende_tu_vestido/?error=True')
