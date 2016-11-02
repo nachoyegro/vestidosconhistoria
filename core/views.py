@@ -4,6 +4,7 @@ from django.views.generic import View
 from webpage_core.views import PageView
 from core.forms import ContactForm, VendeTuVestidoForm
 from django.http import HttpResponse, Http404, HttpResponseRedirect
+from core.models import VendeTuVestidoImagen
 
 
 # Create your views here.
@@ -46,6 +47,8 @@ class VendeTuVestidoView(PageView):
     def post(self, request, *args, **kwargs):
         form = VendeTuVestidoForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            vestido = form.save()
+            for imagen in dict(request.FILES)['images']:
+                VendeTuVestidoImagen.objects.create(vestido=vestido, imagen=imagen)
             return HttpResponseRedirect('/vende_tu_vestido/?success=True')
         return HttpResponseRedirect('/vende_tu_vestido/?error=True')

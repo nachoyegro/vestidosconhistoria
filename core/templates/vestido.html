@@ -1,49 +1,36 @@
+{% extends 'page_base.html' %}
 
-{% load vestidos_tags %}
-<div class="row">
-<div class="col-md-1"></div>
-<div class="productk col-md-10">
-    <br><br>
-    <div class="row vertical-align">
-    	<div class="col-md-6 col-sm-6 col-xs-12">
-    		<div id="text">
-    			{{text|safe}}
-    		</div>
-    	</div>
+{% block content %}
+{{block.super}}
+{% include 'vestido_content.html' %}
 
-    	{% if items %}
-        <!-- Thumbnail of gallery-->
-        <!-- /media/images/1.jpg -->
-        <div class="col-md-4 col-sm-4 col-xs-12">
-            <div id="product{{id}}" class="img-responsive thumbnail">
-                <a href="/media/images/{{ items | first_image | image_name }}" title="{{items|first_image_title}}"
-                   data-gallery="#blueimp-gallery-product-{{id}}" >
-                        <img src="/media/images/{{ items | first_image | image_name }}" alt="{{image.description}}">
-                        <p style="text-align: center;"> Ver Fotos </p>
-                    </a>
-                {% for image in items|rest_images %}
-                        <a href="/media/images/{{ image.image|image_name }}" title="{{image.description}}"
-                           data-gallery="#blueimp-gallery-product-{{id}}">
-                        </a>
-                {% endfor %}
-            </div>
-        </div>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : 'YOUR_APP_ID', // App ID
+    channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true  // parse XFBML
+  });
+};
 
-    	{% else %}
-    	<div class="col-md-4">
-            <div class="widget p-lg text-center">
-                <div class="m-b-md">
-                    <i class="fa fa-file-image-o fa-4x"></i>
-                    <h3 class="font-bold no-margins">Sin foto
-                    </h3>
-                    <small>No se encontro la imagen</small>
-                </div>
-            </div>
-        </div>
+(function(d){
+  var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement('script'); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js";
+  ref.parentNode.insertBefore(js, ref);
+}(document));
+</script>
 
-    	{% endif %}
+...
 
-    </div>
-    <br><br>
-</div>
-</div>
+<div
+   class="fb-comments"
+   data-href="{{ my_object.slug }}"
+   data-num-posts="2"
+   data-width="470"></div>
+
+{% endblock %}

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'webpage_core',
+    'tinymce',
 ]
 
 MIDDLEWARE_CLASSES = [

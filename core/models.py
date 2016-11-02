@@ -15,6 +15,10 @@ class TipoVestido(models.Model):
     def __unicode__(self):
         return u'%s' % self.nombre
 
+class Texto(SimpleText):
+    def __unicode__(self):
+        return u'Texto: %s' % (self.title)
+
 # Create your models here.
 # ImageTextContent es un tipo de Content, que tiene una Imagen, texto y un titulo.
 # Es necesario que Product herede de eso para poder agregarle un precio
@@ -22,7 +26,7 @@ class Vestido(SimpleText):
     tipo = models.ForeignKey(TipoVestido)
 
     def get_template_name(self):
-        return 'vestido.html'
+        return 'vestido_content.html'
 
     def get_context(self):
         #Me traigo el context de SimpleText
@@ -30,6 +34,7 @@ class Vestido(SimpleText):
         #Le agrego el precio
         context['imagenes'] = self.imagenes.all().order_by('index')
         context['id'] = self.pk
+        context['tipo'] = self.tipo
         return context
 
     def __unicode__(self, *args, **kwargs):
@@ -42,7 +47,7 @@ class VestidoImagen(models.Model):
     index = models.IntegerField(verbose_name='Índice', blank=True, null=True)
 
     def __unicode__(self, *args, **kwargs):
-        return u"%s %s" % (self.product,self.description)
+        return u"%s %s" % (self.vestido,self.descripcion)
 
 class Contacto(models.Model):
     nombre = models.CharField(max_length=255)
@@ -53,7 +58,7 @@ class Contacto(models.Model):
     comentario = models.TextField()
 
     def __unicode__(self, *args, **kwargs):
-        return u"%s %s" % (self.nombre, self.asunto)
+        return u"%s %s" % (self.nombre, self.fecha_casamiento)
 
 class Topic(models.Model):
     question = models.TextField('Pregunta')
@@ -113,3 +118,11 @@ class VendeTuVestido(models.Model):
 
     def __unicode__(self, *args, **kwargs):
         return u'%s-%s' % (self.nombre, self.apellido)
+
+
+class VendeTuVestidoImagen(models.Model):
+    vestido = models.ForeignKey(VendeTuVestido, related_name='imagenes')
+    imagen = models.ImageField(blank=True, null=True, upload_to='images')
+
+    def __unicode__(self, *args, **kwargs):
+        return u"%s" % (self.vestido)

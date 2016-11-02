@@ -28,13 +28,13 @@ def remove_accents(data):
     return ''.join(x for x in unicodedata.normalize('NFKD', data) if x in string.ascii_letters).lower()
 
 def first_image(items):
-    return items[0].image
+    return items[0].imagen
 
 def rest_images(items):
     return items[1:]
 
 def first_image_title(items):
-    return items[0].description
+    return items[0].descripcion
 
 def get_split(s):
     return filter_punctuation(remove_accents(s)).split(' ')[0]
