@@ -1,5 +1,6 @@
 from django import template
 from webpage_core.models import Page
+from core.models import Vestido
 from itertools import chain
 import string, unicodedata
 
@@ -13,6 +14,10 @@ def pages():
 @register.assignment_tag(takes_context=False)
 def amount_of_pages():
 	return Page.objects.all().count()
+
+@register.assignment_tag(takes_context=False)
+def cantidad_de_vestidos():
+	return Vestido.objects.all().count()
 
 @register.assignment_tag(takes_context=False)
 def primer_pagina():

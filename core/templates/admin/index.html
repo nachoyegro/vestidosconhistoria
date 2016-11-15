@@ -17,5 +17,88 @@
 
 {% endblock %}
 
+
+{% block content %}
+{% amount_of_pages as pages %}
+<div class="col-lg-2">
+    <a href="{% url 'admin:webpage_core_page_changelist' %}">
+    <div class="col-lg-12">
+        <div class="widget style1 lazur-bg p-lg text-center">
+            <div class="m-b-md">
+                <i class="fa fa-shield fa-4x"></i>
+                <h1 class="m-xs">{{pages}}</h1>
+                <h4 class="font-bold text-center">
+                    Páginas
+                </h4>
+            </div>
+        </div>
+        </div>
+    </a>
+</div>
+<a href="{% url 'admin:core_vestido_changelist' %}">
+<div class="col-lg-4">
+    <div class="widget style1 blue-bg m-t-none">
+        <div class="row">
+            <div class="col-xs-4">
+                <i class="fa fa-eye fa-5x"></i>
+            </div>
+            <div class="col-xs-8 text-right">
+                <span>Vestidos Cargados</span>
+                {% cantidad_de_vestidos as vestidos %}
+                <h2 class="font-bold">{{ vestidos }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+</a>
+
+<a href="{% url 'admin:core_vestido_add' %}">
+<div class="col-lg-4">
+    <div class="widget style1 navy-bg m-t-none">
+        <div class="row">
+            <div class="col-xs-4">
+                <i class="fa fa-plus fa-5x"></i>
+            </div>
+            <div class="col-xs-8 text-right">
+                <span>Nuevo Vestido</span>
+            </div>
+        </div>
+    </div>
+</div>
+</a>
+
+
+<a href="{% url 'admin:core_contacto_changelist' %}">
+<div class="col-lg-2">
+    <div class="widget style1 red-bg m-t-none">
+        <div class="row">
+            <div class="col-xs-4">
+                <i class="fa fa-bell fa-5x"></i>
+            </div>
+            <div class="col-xs-8 text-right">
+                <span>Consultas</span>
+            </div>
+        </div>
+    </div>
+</div>
+</a>
+
+<a href="{% url 'admin:core_vendetuvestido_changelist' %}">
+<div class="col-lg-2">
+    <div class="widget style1 red-bg m-t-none">
+        <div class="row">
+            <div class="col-xs-4">
+                <i class="fa fa-bell fa-5x"></i>
+            </div>
+            <div class="col-xs-8 text-right">
+                <span>Vende tu Vestido</span>
+            </div>
+        </div>
+    </div>
+</div>
+</a>
+
+{% endblock %}
+
 {% block sidebar %}
 {% endblock %}
