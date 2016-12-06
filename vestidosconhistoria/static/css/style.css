@@ -8111,14 +8111,14 @@ body.md-skin {
 }
 
 /* Extra small devices (767px and down) */
-@media (max-width: 767px) { 
+@media (max-width: 767px) {
     .row.vertical-align {
         display: block; /* turn off the flexible box layout */
     }
 }
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
     .row.vertical-align {
         display: flex;
         align-items: center;
@@ -8141,7 +8141,7 @@ body.md-skin {
     background-color: #fff;
     color: black;
     z-index: 9999;
-  
+
   a, a:hover, a:active {
     text-decoration: none;
     color: white;

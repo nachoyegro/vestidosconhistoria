@@ -41,7 +41,9 @@ class ContactView(PageView):
 class VestidoView(View):
     def get(self, request, pk):
         vestido = get_object_or_404(Vestido, pk=pk)
-        return render(request, 'vestido.html', vestido.get_context())
+        context = vestido.get_context(consulta=True)
+        context['contents'] = [(content.get_html(), content.position) for content in Content.objects.filter(is_global=True).order_by('position').select_subclasses()]
+        return render(request, 'vestido.html', context)
 
 class VendeTuVestidoView(PageView):
 

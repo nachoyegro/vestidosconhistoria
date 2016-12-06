@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+PROJECT_MEDIA_ROOT = os.path.abspath(os.path.join(os.getcwd(), os.path.pardir))
+MEDIA_ROOT = '/Users/nachoyegro/Projects/vestidosconhistoria/vestidos/images/'
+MEDIA_URL = '/media/'
+
 
 # Application definition
 

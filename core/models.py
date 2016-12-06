@@ -28,13 +28,14 @@ class Vestido(SimpleText):
     def get_template_name(self):
         return 'vestido_content.html'
 
-    def get_context(self):
+    def get_context(self, **kwargs):
         #Me traigo el context de SimpleText
-        context = super(Vestido, self).get_context()
+        context = super(Vestido, self).get_context(**kwargs)
         #Le agrego el precio
         context['imagenes'] = self.imagenes.all().order_by('index')
         context['id'] = self.pk
         context['tipo'] = self.tipo
+        context['consulta'] = kwargs.get('consulta', False)
         return context
 
     def __unicode__(self, *args, **kwargs):
@@ -74,7 +75,7 @@ class FAQ(Content):
     def __unicode__(self):
         return u'%s' % self.topic
 
-    def get_context(self):
+    def get_context(self, **kwargs):
         context = {}
         context['topic'] = self.topic
         context['content'] = self.content

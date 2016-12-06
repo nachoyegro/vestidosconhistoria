@@ -44,10 +44,25 @@
                 </div>
             </div>
         </div>
-
     	{% endif %}
 
     </div>
+    {% if not consulta %}
+    <div class="col-xs-12 col-sm-3 col-md-4">
+       <a href="{% url 'vestido_view' id %}">
+           <div class="widget style1 navy-bg">
+               <div class="row vertical-align">
+                   <div class="col-xs-3">
+                       <i class="fa fa-comment fa-3x"></i>
+                   </div>
+                   <div class="col-xs-9 text-right">
+                       <h2>Consultar</h2>
+                   </div>
+               </div>
+           </div>
+       </a>
+   </div>
+   {% endif %}
     <br><br>
 </div>
 </div>
