@@ -49,19 +49,19 @@
 <body>
 	{% block content %}
     <div class="body">
-	<div class="row">
-        <!--Identacion para centralizar los contents-->
-		<div class="col-md-1">
-		</div>
-		<div class="col-md-10">
 		{% for content in contents %}
-
-        {{content}}
-        <br>
+        {% block content_disposition %}
+            <div class="row">
+                <!--Identacion para centralizar los contents-->
+        		<div class="col-md-1">
+        		</div>
+        		<div class="col-md-10">
+                    {{content}}
+                </div>
+            </div>
+            <br>
+        {% endblock %}
         {% endfor %}
-
-	</div>
-	</div>
 
     <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
     <div id="blueimp-gallery" class="blueimp-gallery" data-use-bootstrap-modal="false">

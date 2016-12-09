@@ -13,4 +13,13 @@ def compress(image):
     im.save(image, format="JPEG", quality=50)
     return im
 
+def nuevo_vestido(sender, instance, created, **kwargs):
+    if created:
+        from core.models import VestidosManager
+        manager = VestidosManager.objects.all()[0]
+        manager.vestidos.add(instance)
+        manager.save()
+
+
 post_save.connect(compress_image, sender='core.VestidoImagen', dispatch_uid='unique_compress')
+post_save.connect(nuevo_vestido, sender='core.Vestido', dispatch_uid='unique_vestido')

@@ -28,6 +28,9 @@ class Vestido(SimpleText):
     def get_template_name(self):
         return 'vestido_content.html'
 
+    def get_template_preview_name(self):
+        return 'vestido_preview.html'
+
     def get_context(self, **kwargs):
         #Me traigo el context de SimpleText
         context = super(Vestido, self).get_context(**kwargs)
@@ -127,3 +130,18 @@ class VendeTuVestidoImagen(models.Model):
 
     def __unicode__(self, *args, **kwargs):
         return u"%s" % (self.vestido)
+
+#Este es un content nuevo, que reune muchos vestidos
+class VestidosManager(Content):
+    vestidos = models.ManyToManyField(Vestido)
+
+    def __unicode__(self, *args, **kwargs):
+        return u'Soy un conjunto de vestidos'
+
+    def get_template_name(self):
+        return 'vestidos_manager.html'
+
+    def get_context(self, **kwargs):
+        context = {}
+        context['vestidos'] = [vestido.get_preview_html() for vestido in self.vestidos.all()]
+        return context

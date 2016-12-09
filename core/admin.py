@@ -6,6 +6,7 @@ class VestidoImagenInline(admin.TabularInline):
 
 class VestidoAdmin(admin.ModelAdmin):
     inlines = [VestidoImagenInline, ]
+    exclude = ['pages',]
 
 class VendeTuVestidoImagenInline(admin.TabularInline):
     model = VendeTuVestidoImagen
@@ -24,3 +25,4 @@ admin.site.register(Botonera)
 admin.site.register(Texto)
 admin.site.register(VendeTuVestido, VendeTuVestidoAdmin)
 admin.site.register(Contacto)
+admin.site.register(VestidosManager)

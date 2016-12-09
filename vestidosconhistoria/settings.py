@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'tinymce',
 ]
 
+TEMPLATE_CONTEXT_PROCESSORS = ["django.core.context_processors.request", ]
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -86,9 +88,9 @@ WSGI_APPLICATION = 'vestidosconhistoria.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vestidos',
-        'USER': 'root',
-        'PASSWORD': 'c0sm1c0',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': '',
         'PORT': '',
     }
