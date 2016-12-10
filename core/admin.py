@@ -1,5 +1,7 @@
 from django.contrib import admin
 from core.models import *
+from django.db import models
+from django import forms
 
 class VestidoImagenInline(admin.TabularInline):
     model = VestidoImagen
@@ -14,15 +16,27 @@ class VendeTuVestidoImagenInline(admin.TabularInline):
 class VendeTuVestidoAdmin(admin.ModelAdmin):
     inlines = [VendeTuVestidoImagenInline, ]
 
+class HTMLTextAdmin(admin.ModelAdmin):
+    formfield_overrides = { models.TextField: {'widget': forms.Textarea(attrs={'class':'ckeditor'})}, }
+
+    class Media:
+        js = ('ckeditor/ckeditor.js',)
+
+class TextoAdmin(HTMLTextAdmin):
+    pass
+
+class HeaderContentAdmin(HTMLTextAdmin):
+    pass
+
 # Register your models here.
 admin.site.register(Vestido, VestidoAdmin)
 admin.site.register(TipoVestido)
 admin.site.register(TextoYFoto)
 admin.site.register(Topic)
 admin.site.register(FAQ)
-admin.site.register(HeaderContent)
+admin.site.register(HeaderContent, HeaderContentAdmin)
 admin.site.register(Botonera)
-admin.site.register(Texto)
+admin.site.register(Texto, TextoAdmin)
 admin.site.register(VendeTuVestido, VendeTuVestidoAdmin)
 admin.site.register(Contacto)
 admin.site.register(VestidosManager)

@@ -2,6 +2,12 @@
 
     {% block title %}{% endblock %}
 
+    {% block favicon %}
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static "img/favicon-32x32.png" %}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{% static "img/favicon-96x96.png" %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static "img/favicon-16x16.png" %}">
+    {% endblock %}
+
 	{% block css %}
     <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet"/>
     <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet"/>
