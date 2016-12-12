@@ -3,13 +3,29 @@
 {% block content %}
 {% for content, position in contents %}
  {% if position < 2 %}
-    {{ content }}
+     <div class="row">
+         <!--Identacion para centralizar los contents-->
+         <div class="col-md-1">
+         </div>
+         <div class="col-md-10">
+             {{content}}
+         </div>
+     </div>
+     <br>
  {% endif %}
 {% endfor %}
 {% include 'vestido_content.html' %}
 {% for content, position in contents %}
  {% if position >= 2 %}
-    {{ content }}
+ <div class="row">
+     <!--Identacion para centralizar los contents-->
+     <div class="col-md-1">
+     </div>
+     <div class="col-md-10">
+         {{content}}
+     </div>
+ </div>
+ <br>
  {% endif %}
 {% endfor %}
 <div class="row">

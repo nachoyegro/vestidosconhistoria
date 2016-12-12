@@ -22,8 +22,11 @@ $("#fecha_casamiento").datepicker({
 <div class="col-md-9">
 <div class="row">
                 {% if success %}
-                <div class="alert alert-success" id="mensaje_exito">
-                    Se ha enviado con éxito.
+
+                <div class="col-lg-8">
+                    <div class="alert alert-success" id="mensaje_exito">
+                        Se ha enviado con éxito.
+                    </div>
                 </div>
                 {% endif %}
                 {% if error %}

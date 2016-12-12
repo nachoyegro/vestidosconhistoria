@@ -54,12 +54,16 @@ h5 {
 */
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus {
-  background-color: #e6fff2;
+  background-color: #fafafa;
+
+  border: 1px solid #000;
+  border-radius: 5px;
 }
 
-
 .productk{
-  background-color: #e6fff2;
+  background-color: #fafafa;
+  border: 1px solid grey;
+  border-radius: 5px;
 }
 
 .nav .open > a,
