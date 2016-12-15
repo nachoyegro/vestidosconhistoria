@@ -32,12 +32,15 @@ class HeaderContentAdmin(HTMLTextAdmin):
 class ContactoAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'email', 'fecha_casamiento']
 
+class FAQAdmin(admin.ModelAdmin):
+    exclude = ['is_global', 'order']
+
 # Register your models here.
 admin.site.register(Vestido, VestidoAdmin)
 admin.site.register(TipoVestido)
 admin.site.register(TextoYFoto)
 admin.site.register(Topic)
-admin.site.register(FAQ)
+admin.site.register(FAQ, FAQAdmin)
 admin.site.register(HeaderContent, HeaderContentAdmin)
 admin.site.register(Botonera)
 admin.site.register(Texto, TextoAdmin)
