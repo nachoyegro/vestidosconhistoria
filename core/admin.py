@@ -9,6 +9,7 @@ class VestidoImagenInline(admin.TabularInline):
 class VestidoAdmin(admin.ModelAdmin):
     inlines = [VestidoImagenInline, ]
     exclude = ['pages',]
+    list_display = ['title', 'tipo']
 
 class VendeTuVestidoImagenInline(admin.TabularInline):
     model = VendeTuVestidoImagen
@@ -28,6 +29,9 @@ class TextoAdmin(HTMLTextAdmin):
 class HeaderContentAdmin(HTMLTextAdmin):
     pass
 
+class ContactoAdmin(admin.ModelAdmin):
+    list_display = ['nombre', 'email', 'fecha_casamiento']
+
 # Register your models here.
 admin.site.register(Vestido, VestidoAdmin)
 admin.site.register(TipoVestido)
@@ -38,5 +42,5 @@ admin.site.register(HeaderContent, HeaderContentAdmin)
 admin.site.register(Botonera)
 admin.site.register(Texto, TextoAdmin)
 admin.site.register(VendeTuVestido, VendeTuVestidoAdmin)
-admin.site.register(Contacto)
+admin.site.register(Contacto, ContactoAdmin)
 admin.site.register(VestidosManager)
