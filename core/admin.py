@@ -35,10 +35,13 @@ class ContactoAdmin(admin.ModelAdmin):
 class FAQAdmin(admin.ModelAdmin):
     exclude = ['is_global', 'order']
 
+class TextoYFotoAdmin(HTMLTextAdmin):
+    pass
+
 # Register your models here.
 admin.site.register(Vestido, VestidoAdmin)
 admin.site.register(TipoVestido)
-admin.site.register(TextoYFoto)
+admin.site.register(TextoYFoto, TextoYFotoAdmin)
 admin.site.register(Topic)
 admin.site.register(FAQ, FAQAdmin)
 admin.site.register(HeaderContent, HeaderContentAdmin)
