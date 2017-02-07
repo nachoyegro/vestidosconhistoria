@@ -1,0 +1,22 @@
+
+{% load vestidos_tags %}
+<div class="row">
+<div class="col-md-1"></div>
+<div class="productk col-md-10">
+    <br><br>
+    <div class="row">
+        <!-- Thumbnail of gallery-->
+        <!-- /media/images/1.jpg -->
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div id="product{{id}}" class="img-responsive thumbnail">
+                <a href="/media/images/{{ imagen | image_name }}"
+                   data-gallery="#blueimp-gallery-product-{{id}}" >
+                        <img src="/media/images/{{ imagen | image_name }}" alt="{{image.description}}">
+                    </a>
+            </div>
+        </div>
+
+    </div>
+    <br><br>
+</div>
+</div>

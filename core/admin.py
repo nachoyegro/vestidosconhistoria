@@ -38,6 +38,9 @@ class FAQAdmin(admin.ModelAdmin):
 class TextoYFotoAdmin(HTMLTextAdmin):
     pass
 
+class ClientaAdmin(admin.ModelAdmin):
+    exclude = ['pages',]
+
 # Register your models here.
 admin.site.register(Vestido, VestidoAdmin)
 admin.site.register(TipoVestido)
@@ -50,3 +53,5 @@ admin.site.register(Texto, TextoAdmin)
 admin.site.register(VendeTuVestido, VendeTuVestidoAdmin)
 admin.site.register(Contacto, ContactoAdmin)
 admin.site.register(VestidosManager)
+admin.site.register(ClientasFelicesManager)
+admin.site.register(Clienta, ClientaAdmin)

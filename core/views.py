@@ -5,7 +5,8 @@ from webpage_core.views import PageView
 from core.forms import ContactForm, VendeTuVestidoForm
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from core.models import VendeTuVestidoImagen, Vestido
-
+from buscador_vestidos import BuscadorVestidos
+from django.db.models import Q
 
 # Create your views here.
 
@@ -59,3 +60,20 @@ class VendeTuVestidoView(PageView):
                 VendeTuVestidoImagen.objects.create(vestido=vestido, imagen=imagen)
             return HttpResponseRedirect('/vende_tu_vestido/?success=True')
         return HttpResponseRedirect('/vende_tu_vestido/?error=True')
+
+class VestidosFiltradosView(View):
+    def get(self, request, url_name, *args, **kwargs):
+        page = get_object_or_404(Page, url_name=url_name)
+        buscador_vestidos = BuscadorVestidos()
+        vestidos = buscador_vestidos.get_vestidos(**request.GET)
+        vestidos_pks = [vestido.pk for vestido in vestidos]
+        contents = self.get_contents_with_order(vestidos_pks, page)
+        return render(request, page.html_name, {'contents': contents, 'title': page.title, 'amount': len(contents)})
+
+    def get_contents_with_order(self, contents_pks, page):
+        contents = []
+        #Aca busco el VestidoManager y los globales
+        for content in Content.objects.filter(pages=page).order_by('position').select_subclasses():
+            #Aca le digo al VestidoManager que tiene que filtrar por esos pks
+            contents.append(content.get_html(pks=contents_pks))
+        return contents

@@ -20,6 +20,14 @@ def nuevo_vestido(sender, instance, created, **kwargs):
         manager.vestidos.add(instance)
         manager.save()
 
+def nueva_clienta(sender, instance, created, **kwargs):
+    if created:
+        from core.models import ClientasFelicesManager
+        manager = ClientasFelicesManager.objects.all()[0]
+        manager.clientas.add(instance)
+        manager.save()
+
 
 post_save.connect(compress_image, sender='core.VestidoImagen', dispatch_uid='unique_compress')
 post_save.connect(nuevo_vestido, sender='core.Vestido', dispatch_uid='unique_vestido')
+post_save.connect(nueva_clienta, sender='core.Clienta', dispatch_uid='unique_clienta')
