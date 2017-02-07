@@ -45,8 +45,8 @@ def get_split(s):
     return filter_punctuation(remove_accents(s)).split(' ')[0]
 
 def image_name(image):
-	if not image.url:
-		return None
+    if not image.url:
+        return None
     return image.url.split('/')[-1]
 
 register.filter('pages', pages)

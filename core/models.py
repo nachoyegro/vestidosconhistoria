@@ -142,6 +142,46 @@ class VestidosManager(Content):
         return 'vestidos_manager.html'
 
     def get_context(self, **kwargs):
+        vestidos_pks = kwargs.get('pks', None)
+        if vestidos_pks:
+            vestidos = self.vestidos.filter(pk__in=vestidos_pks)
+        else:
+            vestidos = self.vestidos.all()
         context = {}
-        context['vestidos'] = [vestido.get_preview_html() for vestido in self.vestidos.all()]
+        context['vestidos'] = [vestido.get_preview_html() for vestido in vestidos]
+        return context
+
+class Clienta(ImageTextContent):
+
+    def __unicode__(self, *args, **kwargs):
+        return u'Clienta: %s' % (self.title)
+
+    def get_template_preview_name(self):
+        return 'clienta_preview.html'
+
+    def get_context(self, **kwargs):
+        #Me traigo el context de SimpleText
+        context = super(Clienta, self).get_context(**kwargs)
+        context['imagen'] = self.image
+        context['id'] = self.pk
+        return context
+
+#Este es un content nuevo, que reune muchas clientas
+class ClientasFelicesManager(Content):
+    clientas = models.ManyToManyField(Clienta)
+
+    def __unicode__(self, *args, **kwargs):
+        return u'Clientas'
+
+    def get_template_name(self):
+        return 'clientas_manager.html'
+
+    def get_context(self, **kwargs):
+        clientas_pks = kwargs.get('pks', None)
+        if clientas_pks:
+            clientas = self.clientas.filter(pk__in=clientas_pks)
+        else:
+            clientas = self.clientas.all()
+        context = {}
+        context['clientas'] = [clienta.get_preview_html() for clienta in clientas]
         return context
