@@ -88,9 +88,9 @@ WSGI_APPLICATION = 'vestidosconhistoria.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        'NAME': 'vestidos',
+        'USER': 'root',
+        'PASSWORD': 'c0sm1c0',
         'HOST': '',
         'PORT': '',
     }
