@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = '/opt/dj-sites/vestidos-env/vestidosconhistoria/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -28,8 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 PROJECT_MEDIA_ROOT = os.path.abspath(os.path.join(os.getcwd(), os.path.pardir))
-MEDIA_ROOT = '/Users/nachoyegro/Projects/vestidosconhistoria/vestidos/images/'
+#MEDIA_ROOT = '/opt/dj-sites/vestidos-env/vestidosconhistoria/vestidosconhistoria/'
+MEDIA_ROOT = '/opt/dj-sites/vestidos-env/vestidosconhistoria/vestidosconhistoria/images/'
+#PROJECT_MEDIA_ROOT = os.path.abspath(os.path.join(os.getcwd(), os.path.pardir))
 MEDIA_URL = '/media/'
+#STATIC_ROOT = '/opt/dj-sites/vestidos-env/vestidosconhistoria/vestidosconhistoria/static/'
 
 
 # Application definition
@@ -45,6 +48,7 @@ INSTALLED_APPS = [
     'core',
     'webpage_core',
     'tinymce',
+    'gunicorn',
 ]
 
 TEMPLATE_CONTEXT_PROCESSORS = ["django.core.context_processors.request", ]
@@ -88,9 +92,9 @@ WSGI_APPLICATION = 'vestidosconhistoria.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        'NAME': 'vestidos',
+        'USER': 'root',
+        'PASSWORD': 'c0sm1c0',
         'HOST': '',
         'PORT': '',
     }
@@ -134,13 +138,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'vestidosconhistoria/static')
 STATICFILES_DIRS = (
    # '/Users/tagercito/devel/inicc/static/admin/css/'
    # '/Users/tagercito/devel/inicc/static/admin_tools/'
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-        os.path.join(BASE_DIR, 'vestidosconhistoria/static'),
+        os.path.join(BASE_DIR, 'vestidosconhistoria/staticfiles'),
 
 )
