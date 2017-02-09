@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from webpage_core.models import SimpleText, ImageTextContent, Content
+from tinymce.models import HTMLField
 
 class TextoYFoto(ImageTextContent):
     def __unicode__(self):
@@ -65,14 +66,14 @@ class Contacto(models.Model):
         return u"%s %s" % (self.nombre, self.fecha_casamiento)
 
 class Topic(models.Model):
-    question = models.TextField('Pregunta')
+    question = HTMLField('Pregunta')
 
     def __unicode__(self):
         return u'%s' % self.question
 
 class FAQ(Content):
     topic = models.ForeignKey(Topic)
-    content = models.TextField('Respuesta')
+    content = HTMLField('Respuesta')
     order = models.IntegerField()
 
     def __unicode__(self):
