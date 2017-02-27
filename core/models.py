@@ -93,6 +93,12 @@ class FAQ(Content):
         verbose_name_plural = 'FAQs'
 
 class HeaderContent(ImageTextContent):
+    subtitle = HTMLField('Subtitulo')
+
+    def get_context(self, **kwargs):
+        context = super(HeaderContent, self).get_context(**kwargs)
+        context['subtitulo'] = self.subtitle
+        return context
 
     def get_template_name(self):
         return 'header.html'

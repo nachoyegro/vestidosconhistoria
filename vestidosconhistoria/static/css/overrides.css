@@ -2,3 +2,13 @@
 body{
     background-color: #fff5fe;
 }
+
+.titulo {
+    position: relative;
+    left: 20%;
+}
+
+.subtitulo {
+    position: relative;
+    left: 40%;
+}
