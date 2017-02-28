@@ -1,8 +1,14 @@
-<div class="row">
 {% for vestido in vestidos %}
-        <div class="col-md-4">
-            {{vestido}}
-        </div>
+    {% if forloop.counter == 1 %}
+    <!-- Si es el primero, abro el primer row -->
+    <div class="row">
+    {% elif forloop.counter|divisibleby:4 %}
+    <!-- Si no es el primero, pero es divisible por 3, cierro el row anterior y abro uno nuevo -->
+    </div>
+    <div class="row">
+    {% endif %}
+    <div class="col-md-4">
+        {{vestido}}
+    </div>
 {% endfor %}
-
-</div>
+</div><!-- Cierro el ultimo ROW -->
