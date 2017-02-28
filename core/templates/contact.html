@@ -38,6 +38,8 @@ $("#fecha_casamiento").datepicker({
                 <div class="col-lg-8">
                     <div class="ibox float-e-margins">
 
+                            <p style="font-family: 'Raleway', sans-serif; font-size: 16px;">Llamanos al 4807-0096 o escribinos a vestidosconhistoria@hotmail.com</p>
+                            <p style="font-family: 'Raleway', sans-serif; font-size: 16px;">Sino completá el formulario y te respondemos a la brevedad.</p>
                         <div class="ibox-title">
                             <h5>Contacto</h5>
                             <div class="ibox-tools">
@@ -50,6 +52,7 @@ $("#fecha_casamiento").datepicker({
                             </div>
                         </div>
                         <div class="ibox-content">
+
                             <form action="{% url 'contact_view' %}" method="POST" class="form-horizontal">
                                 {% csrf_token %}
                                 <div class="form-group">
