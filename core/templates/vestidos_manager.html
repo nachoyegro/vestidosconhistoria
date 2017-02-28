@@ -2,13 +2,17 @@
     {% if forloop.counter == 1 %}
     <!-- Si es el primero, abro el primer row -->
     <div class="row">
-    {% elif forloop.counter|divisibleby:4 %}
+        <div class="col-md-4">
+            {{vestido}}
+        </div>
+    {% elif forloop.counter|divisibleby:3 %}
     <!-- Si no es el primero, pero es divisible por 3, cierro el row anterior y abro uno nuevo -->
-    </div>
-    <div class="row">
-    {% endif %}
     <div class="col-md-4">
         {{vestido}}
     </div>
+    </div>
+    <!-- Cierro el row de 3 -->
+    <div class="row">
+    {% endif %}
 {% endfor %}
 </div><!-- Cierro el ultimo ROW -->
