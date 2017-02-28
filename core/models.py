@@ -114,6 +114,25 @@ class Botonera(Content):
     def __unicode__(self, *args, **kwargs):
         return u'Botonera'
 
+class Carousel(Content):
+
+    def get_context(self, **kwargs):
+        context = {}
+        context['imagenes'] = self.imagenes.all()
+        return context
+
+    def get_template_name(self):
+        return 'carousel.html'
+
+    def __unicode__(self, *args, **kwargs):
+        return u'Carousel'
+
+class CarouselImagen(models.Model):
+    carousel = models.ForeignKey(Carousel, related_name='imagenes')
+    imagen = models.ImageField(blank=True, null=True, upload_to='images')
+    texto = models.TextField(blank=True, null=True)
+
+
 class VendeTuVestido(models.Model):
     nombre = models.CharField(max_length=255)
     apellido = models.CharField(max_length=255)
