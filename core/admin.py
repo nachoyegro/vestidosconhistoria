@@ -8,7 +8,7 @@ class VestidoImagenInline(admin.TabularInline):
 
 class VestidoAdmin(admin.ModelAdmin):
     inlines = [VestidoImagenInline, ]
-    exclude = ['pages',]
+    exclude = ['pages', 'is_global']
     list_display = ['title', 'tipo']
 
 class VendeTuVestidoImagenInline(admin.TabularInline):
@@ -24,7 +24,7 @@ class HTMLTextAdmin(admin.ModelAdmin):
         js = ('ckeditor/ckeditor.js',)
 
 class TextoAdmin(HTMLTextAdmin):
-    pass
+    exclude = ['is_global']
 
 class HeaderContentAdmin(HTMLTextAdmin):
     pass
@@ -36,6 +36,7 @@ class FAQAdmin(HTMLTextAdmin):
     exclude = ['is_global', 'order']
 
 class TextoYFotoAdmin(HTMLTextAdmin):
+    exclude = ['is_global']
     pass
 
 class ClientaAdmin(admin.ModelAdmin):
