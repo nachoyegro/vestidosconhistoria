@@ -45,8 +45,15 @@ class ClientaAdmin(admin.ModelAdmin):
 class TopicAdmin(HTMLTextAdmin):
     pass
 
+class CarouselImagenInline(admin.TabularInline):
+    model = CarouselImagen
+
+class CarouselAdmin(admin.ModelAdmin):
+    inlines = [CarouselImagenInline, ]
+
 
 # Register your models here.
+admin.site.register(Carousel, CarouselAdmin)
 admin.site.register(Vestido, VestidoAdmin)
 admin.site.register(TipoVestido)
 admin.site.register(TextoYFoto, TextoYFotoAdmin)
