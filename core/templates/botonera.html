@@ -1,7 +1,7 @@
 {% load vestidos_tags %}
 {% pages as pages %}
 <div class="row">
-	<div class="col-md-11 col-centered">
+	<div class="col-md-12 col-centered">
 		<nav class="navbar navbar-default white-bg">
 		  <div class="container-fluid">
 		    <!-- Brand and toggle get grouped for better mobile display -->
@@ -18,7 +18,7 @@
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
 		      		{% for page in pages %}
-			  					<li><a aria-expanded="false" role="button" href="/{{page.url_name}}/" style="font-family: 'Raleway', sans-serif; font-size: 16px;">{{page}}</a></li>
+			  					<li><a aria-expanded="false" role="button" href="/{{page.url_name}}/" style="font-family: 'Raleway', sans-serif; font-size: 12px;">{{page}}</a></li>
 							{% endfor %}
 							<li><a aria-expanded="false" role="button" href="http://www.facebook.com/VCHnovias"
 							target="_blank">
