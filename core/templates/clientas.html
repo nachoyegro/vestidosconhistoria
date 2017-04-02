@@ -1,0 +1,24 @@
+{% extends 'page_base.html' %}
+
+{% block content_disposition %}
+    {% if forloop.counter == 1 %}
+    <!-- Si es el primero, abro el primer row -->
+    <div class="row">
+        <div class="col-md-4">
+            {{content}}
+        </div>
+    {% elif forloop.counter|divisibleby:3 %}
+    <!-- Si no es el primero, pero es divisible por 3, cierro el row anterior y abro uno nuevo -->
+    <div class="col-md-4">
+        {{content}}
+    </div>
+    </div>
+    <!-- Cierro el row de 3 -->
+    <div class="row">
+    {% else %}
+    <div class="col-md-4">
+        {{content}}
+    </div>
+    {% endif %}
+{% endblock %}
+</div><!-- Cierro el ultimo ROW -->
