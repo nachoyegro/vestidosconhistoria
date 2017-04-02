@@ -4,7 +4,7 @@ from django.views.generic import View
 from webpage_core.views import PageView
 from core.forms import ContactForm, VendeTuVestidoForm
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from core.models import VendeTuVestidoImagen, Vestido
+from core.models import VendeTuVestidoImagen, Vestido, Carousel, ImagenPortada, HeaderContent
 from buscador_vestidos import BuscadorVestidos
 from django.db.models import Q
 
@@ -25,6 +25,15 @@ class HomeView(View):
     def get(self, request):
         page = Page.objects.all().order_by('order')[0]
         return render_page(page, request, {})
+
+class IndexView(View):
+
+    def get(self, request):
+        imagen1 = ImagenPortada.objects.all()[0]
+        imagen2 = ImagenPortada.objects.all()[1]
+        carousel = Carousel.objects.all()[0]
+        header = HeaderContent.objects.all()[0]
+        return render(request, 'index.html', dict(header=header.get_html(), imagen1=imagen1.get_html(), imagen2=imagen2.get_html(), carousel=carousel.get_html()))
 
 class ContactView(PageView):
 

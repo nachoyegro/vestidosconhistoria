@@ -10,6 +10,13 @@ class TextoYFoto(ImageTextContent):
     def __unicode__(self):
         return u'Texto y foto: %s' % (self.title)
 
+class ImagenPortada(ImageTextContent):
+    def __unicode__(self):
+        return u'Imagen de portada'
+
+    def get_template_name(self):
+        return 'imagen_portada.html'
+
 class TipoVestido(models.Model):
     nombre = models.CharField(max_length=255)
 

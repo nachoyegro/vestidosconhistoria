@@ -1,0 +1,32 @@
+{% extends 'page_base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        {{header}}
+    </div>
+</div>
+<div class="row">
+<div class="col-md-1"></div>
+<div class="col-md-5">
+    <div id="product{{id}}" class="img-responsive thumbnail">
+    {{imagen1}}
+</div>
+</div>
+<div class="col-md-5">
+    <div id="product{{id}}" class="img-responsive thumbnail">
+    {{imagen2}}
+</div>
+</div>
+<div class="col-md-1"></div>
+</div>
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+        {{carousel}}
+    </div>
+    <div class="col-md-1">
+    </div>
+</div>
+{% endblock %}

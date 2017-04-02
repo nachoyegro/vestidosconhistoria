@@ -55,7 +55,7 @@
 {% block body %}
 <body>
 	{% block content %}
-    <div class="body">
+    <body style="background: url(/media/{{background}}) no-repeat center top fixed;">
 		{% for content in contents %}
         {% block content_disposition %}
             <div class="row">
