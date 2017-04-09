@@ -218,3 +218,17 @@ class ClientasFelicesManager(Content):
         context = {}
         context['clientas'] = [clienta.get_preview_html() for clienta in clientas]
         return context
+
+class TipoVestidoManager(Content):
+    tipos = models.ManyToManyField(TipoVestido)
+
+    def __unicode__(self, *args, **kwargs):
+        return u'Tipos'
+
+    def get_template_name(self):
+        return 'tipos_manager.html'
+
+    def get_context(self, **kwargs):
+        context = {}
+        context['tipos'] = self.tipos.all()
+        return context
