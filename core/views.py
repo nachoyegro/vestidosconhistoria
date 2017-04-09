@@ -4,7 +4,7 @@ from django.views.generic import View
 from webpage_core.views import PageView
 from core.forms import ContactForm, VendeTuVestidoForm
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from core.models import VendeTuVestidoImagen, Vestido, Carousel, ImagenPortada, HeaderContent
+from core.models import *
 from buscador_vestidos import BuscadorVestidos
 from django.db.models import Q
 
@@ -32,8 +32,9 @@ class IndexView(View):
         imagen1 = ImagenPortada.objects.all()[0]
         imagen2 = ImagenPortada.objects.all()[1]
         carousel = Carousel.objects.all()[0]
+        botonera = Botonera.objects.all()[0]
         header = HeaderContent.objects.all()[0]
-        return render(request, 'index.html', dict(header=header.get_html(), imagen1=imagen1.get_html(), imagen2=imagen2.get_html(), carousel=carousel.get_html()))
+        return render(request, 'index.html', dict(header=header.get_html(), botonera=botonera.get_html() ,imagen1=imagen1.get_html(), imagen2=imagen2.get_html(), carousel=carousel.get_html()))
 
 class ContactView(PageView):
 
@@ -71,8 +72,8 @@ class VendeTuVestidoView(PageView):
         return HttpResponseRedirect('/vende_tu_vestido/?error=True')
 
 class VestidosFiltradosView(View):
-    def get(self, request, url_name, *args, **kwargs):
-        page = get_object_or_404(Page, url_name=url_name)
+    def get(self, request, *args, **kwargs):
+        page = get_object_or_404(Page, url_name='vestidos')
         buscador_vestidos = BuscadorVestidos()
         vestidos = buscador_vestidos.get_vestidos(**request.GET)
         vestidos_pks = [vestido.pk for vestido in vestidos]

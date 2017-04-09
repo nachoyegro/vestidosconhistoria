@@ -17,7 +17,7 @@ class BuscadorVestidos(object):
 	def get_vestidos(self, **kwargs):
 		formatted_kwargs = self.formatted_kwargs(kwargs)
 		if 'tipo' in formatted_kwargs:
-			return Vestido.objects.filter(tipo__nombre=formatted_kwargs['tipo'])
+			return Vestido.objects.filter(tipo__pk=formatted_kwargs['tipo'])
 		if 'and' in formatted_kwargs:
 			and_value = formatted_kwargs.pop('and', None)
 			if 'tipo__nombre__istartswith' in formatted_kwargs:
