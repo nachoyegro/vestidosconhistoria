@@ -31,6 +31,7 @@ class HeaderContentAdmin(HTMLTextAdmin):
 
 class ContactoAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'email', 'fecha_casamiento']
+    readonly_fields = ['nombre', 'email', 'telefono', 'fecha_casamiento', 'conocieron', 'comentario']
 
 class FAQAdmin(HTMLTextAdmin):
     exclude = ['is_global', 'order']

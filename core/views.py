@@ -7,6 +7,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from core.models import *
 from buscador_vestidos import BuscadorVestidos
 from django.db.models import Q
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -45,7 +46,14 @@ class ContactView(PageView):
     def post(self, request, *args, **kwargs):
         form = ContactForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            contacto = form.save()
+            send_mail(
+                'Se contactaron en Vestidos con Historia',
+                'Para leer los datos ingrese aqui http://vestidosconhistoria.com/admin/core/contacto/%d/' % contacto.pk,
+                'contacto.vestidosch@gmail.com',
+                ['vestidosconhistoria@hotmail.com'],
+                fail_silently=False,
+            )
             return HttpResponseRedirect('/contacto/?success=True')
         return HttpResponseRedirect('/contacto/?error=True')
 
