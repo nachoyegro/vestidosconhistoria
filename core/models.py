@@ -177,9 +177,9 @@ class VestidosManager(Content):
     def get_context(self, **kwargs):
         vestidos_pks = kwargs.get('pks', None)
         if vestidos_pks:
-            vestidos = self.vestidos.filter(pk__in=vestidos_pks)
+            vestidos = self.vestidos.filter(pk__in=vestidos_pks).order_by('-pk')
         else:
-            vestidos = self.vestidos.all()
+            vestidos = self.vestidos.all().order_by('-pk')
         context = {}
         context['vestidos'] = [vestido.get_preview_html() for vestido in vestidos]
         return context
