@@ -21,7 +21,7 @@
             <div id="product{{id}}" class="img-responsive thumbnail">
                 <a href="/media/images/{{ imagenes | first_image | image_name }}" title="{{imagenes|first_image_title}}"
                    data-gallery="#blueimp-gallery-product-{{id}}" >
-                        <img src="/media/images/{{ imagenes | first_image | image_name }}" alt="{{image.description}}">
+                        <img style="width: 150px; height: 200px;overflow: hidden;" src="/media/images/{{ imagenes | first_image | image_name }}" alt="{{image.description}}">
                     </a>
                 {% for image in imagenes|rest_images %}
                         <a href="/media/images/{{ image.imagen|image_name }}" title="{{image.description}}"
@@ -54,7 +54,7 @@
                        <i class="fa fa-comments fa-3x"></i>
                    </div>
                    <div class="col-xs-9 text-right">
-                       <h2>Consultar</h2>
+                       <h3>Consultar</h3>
                    </div>
                </div>
            </div>
