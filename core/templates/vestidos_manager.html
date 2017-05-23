@@ -1,7 +1,7 @@
 {% for vestido in vestidos %}
     {% if forloop.counter == 1 %}
     <!-- Si es el primero, abro el primer row -->
-    <div class="row">
+    <div class="row" style="margin-top:20px;">
         <div class="col-md-4">
             {{vestido}}
         </div>
@@ -12,7 +12,7 @@
     </div>
     </div>
     <!-- Cierro el row de 3 -->
-    <div class="row">
+    <div class="row" style="margin-top:20px;">
     {% else %}
     <div class="col-md-4">
         {{vestido}}
