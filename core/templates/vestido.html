@@ -33,6 +33,15 @@
     <div class="col-md-10">
         <div id="fb-root"></div>
             <script>
+            function comentario_callback(){
+                return jQuery.ajax({
+        			url: "{% url 'nuevo_comentario' id %}",
+        			type: "GET",
+        			dataType: "script",
+        			async: true,
+        		});
+            }
+
               window.fbAsyncInit = function() {
               FB.init({
                 appId      : 'YOUR_APP_ID', // App ID
@@ -41,6 +50,7 @@
                 cookie     : true, // enable cookies to allow the server to access the session
                 xfbml      : true  // parse XFBML
               });
+              FB.Event.subscribe('comment.create', comentario_callback);
             };
 
             (function(d){

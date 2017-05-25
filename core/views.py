@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect, get_object_or_404
 from webpage_core.models import Page, Content
 from django.views.generic import View
@@ -8,6 +9,8 @@ from core.models import *
 from buscador_vestidos import BuscadorVestidos
 from django.db.models import Q
 from django.core.mail import send_mail
+import json
+from django.conf import settings
 
 # Create your views here.
 
@@ -52,7 +55,7 @@ class ContactView(PageView):
                 'Para leer los datos ingrese aqui http://vestidosconhistoria.com/admin/core/contacto/%d/' % contacto.pk,
                 'contacto.vestidosch@gmail.com',
                 ['vestidosconhistoria@hotmail.com'],
-                fail_silently=False,
+                fail_silently=not settings.DEBUG,
             )
             return HttpResponseRedirect('/contacto/?success=True')
         return HttpResponseRedirect('/contacto/?error=True')
@@ -95,3 +98,15 @@ class VestidosFiltradosView(View):
             #Aca le digo al VestidoManager que tiene que filtrar por esos pks
             contents.append(content.get_html(pks=contents_pks))
         return contents
+
+class NuevoComentarioView(View):
+    def get(self, request, pk):
+        send_mail(
+            'Realizaron un comentario en Vestidos con Historia',
+            'Para leerlo ingrese aquí http://vestidosconhistoria.com/vestido/%s/' % str(pk),
+            'contacto.vestidosch@gmail.com',
+            ['vestidosconhistoria@hotmail.com'],
+            #['nachoyegro@gmail.com'],
+            fail_silently=not settings.DEBUG, #Si estoy en produccion quiero que falle silenciosamente
+        )
+        return HttpResponse(json.dumps("success"))
