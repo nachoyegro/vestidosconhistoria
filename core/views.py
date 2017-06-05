@@ -77,8 +77,11 @@ class VendeTuVestidoView(PageView):
         form = VendeTuVestidoForm(data=request.POST)
         if form.is_valid():
             vestido = form.save()
-            for imagen in dict(request.FILES)['images']:
-                VendeTuVestidoImagen.objects.create(vestido=vestido, imagen=imagen)
+            try:
+                for imagen in dict(request.FILES)['images']:
+                    VendeTuVestidoImagen.objects.create(vestido=vestido, imagen=imagen)
+            except:
+                pass
             send_mail(
                 'Cargaron un vestido en Vestidos con Historia!',
                 'Para leerlo ingrese aquí http://vestidosconhistoria.com/admin/core/vendetuvestido/%s/' % str(vestido.pk),
