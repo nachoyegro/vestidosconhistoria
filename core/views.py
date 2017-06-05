@@ -79,6 +79,14 @@ class VendeTuVestidoView(PageView):
             vestido = form.save()
             for imagen in dict(request.FILES)['images']:
                 VendeTuVestidoImagen.objects.create(vestido=vestido, imagen=imagen)
+            send_mail(
+                'Cargaron un vestido en Vestidos con Historia!',
+                'Para leerlo ingrese aquí http://vestidosconhistoria.com/admin/core/vendetuvestido/%s/' % str(vestido.pk),
+                'contacto.vestidosch@gmail.com',
+                ['vestidosconhistoria@hotmail.com', 'nachoyegro@gmail.com'],
+                #['nachoyegro@gmail.com'],
+                fail_silently=not settings.DEBUG, #Si estoy en produccion quiero que falle silenciosamente
+            )
             return HttpResponseRedirect('/vende_tu_vestido/?success=True')
         return HttpResponseRedirect('/vende_tu_vestido/?error=True')
 
