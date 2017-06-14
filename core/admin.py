@@ -17,7 +17,7 @@ class VendeTuVestidoImagenInline(admin.TabularInline):
 class VendeTuVestidoAdmin(admin.ModelAdmin):
     inlines = [VendeTuVestidoImagenInline, ]
     readonly_fields = ['nombre', 'apellido', 'email', 'telefono', 'fecha_casamiento', 'modista',
-     'precio_venta', 'talle_contorno_espalda', 'talle_corpino', 'altura', 'comentarios']
+     'precio_venta', 'talle_contorno_espalda', 'talle_corpino', 'medida_cintura', 'medida_cadera', 'altura', 'comentarios']
 
 class HTMLTextAdmin(admin.ModelAdmin):
     formfield_overrides = { models.TextField: {'widget': forms.Textarea(attrs={'class':'ckeditor'})}, }

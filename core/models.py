@@ -150,6 +150,8 @@ class VendeTuVestido(models.Model):
     precio_venta = models.DecimalField(decimal_places=2, max_digits=10)
     talle_contorno_espalda = models.CharField(max_length=128)
     talle_corpino = models.CharField(max_length=128)
+    medida_cintura = models.CharField(max_length=128)
+    medida_cadera = models.CharField(max_length=128)
     altura = models.CharField(max_length=128)
     comentarios = models.TextField()
 
