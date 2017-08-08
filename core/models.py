@@ -212,9 +212,9 @@ class ClientasFelicesManager(Content):
     def get_context(self, **kwargs):
         clientas_pks = kwargs.get('pks', None)
         if clientas_pks:
-            clientas = self.clientas.filter(pk__in=clientas_pks)
+            clientas = self.clientas.filter(pk__in=clientas_pks).order_by('-pk')
         else:
-            clientas = self.clientas.all()
+            clientas = self.clientas.all().order_by('-pk')
         context = {}
         context['clientas'] = [clienta.get_preview_html() for clienta in clientas]
         return context
